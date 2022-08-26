@@ -80,7 +80,6 @@ class LoginViewController: UIViewController {
     private lazy var loginButton: UIButton = {
             let button = UIButton()
             button.backgroundColor = .black
-            button.alpha  =  0.5
             button.setTitle("Login", for: .normal)
             button.layer.cornerRadius = 8.0
             button.heightAnchor.constraint(equalToConstant: 55).isActive = true
@@ -144,16 +143,20 @@ class LoginViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    @objc func onLoginButtonTapped() {
-        let tabBar = UITabBarController()
+    func setUpTabBarViewController() {
+        let tabBarViewController = UITabBarController()
         let movieListViewController = UINavigationController(rootViewController: TrendingViewController())
         movieListViewController.title = Constants.TRENDING_TITLE
         let featuredViewController = UINavigationController(rootViewController: FeaturedViewController())
         featuredViewController.title = Constants.FEATURED_TITLE
 
-        tabBar.setViewControllers([movieListViewController, featuredViewController], animated: true)
-        tabBar.modalPresentationStyle = .fullScreen
-        self.present(tabBar, animated: true)
+        tabBarViewController.setViewControllers([movieListViewController, featuredViewController], animated: true)
+        tabBarViewController.modalPresentationStyle = .fullScreen
+        self.present(tabBarViewController, animated: true)
+    }
+    
+    @objc func onLoginButtonTapped() {
+       setUpTabBarViewController()
     }
 }
 
