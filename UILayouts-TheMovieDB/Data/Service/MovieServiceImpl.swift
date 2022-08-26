@@ -24,6 +24,7 @@ class MovieServiceImpl: MovieService {
                                 onCompletion(
                                     .success(
                                         movieResponse.collection.map({ $0.toMovie() })
+                                            .filter({ !$0.title.isEmpty })
                                     )
                                 )
                             } catch DecodingError.dataCorrupted(let context) {

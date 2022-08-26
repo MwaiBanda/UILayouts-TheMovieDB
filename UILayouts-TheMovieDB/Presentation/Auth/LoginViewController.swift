@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
         stack.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         stack.isLayoutMarginsRelativeArrangement = true
         stack.layer.shadowColor = UIColor.black.cgColor
-        stack.layer.shadowOpacity = 0.25
+        stack.layer.shadowOpacity = 0.15
         stack.layer.shadowOffset = .zero
         stack.layer.shadowRadius = 10
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -147,9 +147,10 @@ class LoginViewController: UIViewController {
         let tabBarViewController = UITabBarController()
         let movieListViewController = UINavigationController(rootViewController: TrendingViewController())
         movieListViewController.title = Constants.TRENDING_TITLE
+        movieListViewController.tabBarItem.image = UIImage(systemName: "play.tv")
         let featuredViewController = UINavigationController(rootViewController: FeaturedViewController())
         featuredViewController.title = Constants.FEATURED_TITLE
-
+        featuredViewController.tabBarItem.image = UIImage(systemName: "ticket")
         tabBarViewController.setViewControllers([movieListViewController, featuredViewController], animated: true)
         tabBarViewController.modalPresentationStyle = .fullScreen
         self.present(tabBarViewController, animated: true)

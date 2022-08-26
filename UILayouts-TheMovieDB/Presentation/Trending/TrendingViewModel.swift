@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import RxSwift
 
 class TrendingViewModel {
     var movieService: MovieService
+    var movies = PublishSubject<[Movie]>()
     
     init(movieService: MovieService = MovieServiceImpl.shared) {
         self.movieService = movieService
@@ -18,7 +20,9 @@ class TrendingViewModel {
         movieService.fetchTrending { res in
             switch res {
             case .success(let movies):
-                print(movies)
+                self.movies.onNext(movies)
+                self.movies.onCompleted()
+                print("[FETCH-RESULT]: Success")
             case .failure(let error):
                 print(error.localizedDescription)
             }
