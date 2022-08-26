@@ -9,6 +9,12 @@ import UIKit
 
 class FeaturedViewController: UIViewController {
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = .systemGray5
+        navigationController?.tabBarController?.tabBar.barTintColor = .systemGray5
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray5

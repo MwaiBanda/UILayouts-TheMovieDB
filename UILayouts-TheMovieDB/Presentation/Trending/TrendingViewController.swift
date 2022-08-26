@@ -28,13 +28,14 @@ class TrendingViewController: UIViewController {
         navigationController?.tabBarController?.tabBar.barTintColor = .systemGray5
         trendingViewModel.getTrendingMovies()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray5
         view.addSubview(tableView)
         title = Constants.TRENDING_TITLE
         
-       
+        
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
         setupConstraints()
@@ -47,22 +48,34 @@ class TrendingViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-
+            
         ])
     }
-
+    
     func setupSubscribers() {
         
         trendingViewModel.movies
-            .bind(to: tableView.rx.items(cellIdentifier: TrendingTableViewCell.identifier, cellType: TrendingTableViewCell.self)){ row, movie, cell in
-
-                cell.imageView?.sd_setImage(with: movie.posterImageUrl, placeholderImage: UIImage(named: "placeholder"), options: [.highPriority])
-                cell.imageView?.contentMode = .scaleAspectFill
-                cell.textLabel?.attributedText = NSAttributedString(string: movie.title, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .heavy)])
-
+            .bind(
+                to: tableView.rx
+                    .items(
+                        cellIdentifier: TrendingTableViewCell.identifier,
+                        cellType: TrendingTableViewCell.self
+                    )
+            ){ row, movie, cell in
+                
+                cell.coverImage?.sd_setImage(with: movie.posterImageUrl, placeholderImage: UIImage(named: "placeholder"), options: [.highPriority])
+                cell.movieTitle.text = movie.title
+                cell.movieDescription.attributedText = NSAttributedString(
+                    string:  movie.overview.trimmingCharacters(in: .whitespacesAndNewlines),
+                    attributes: [
+                        .foregroundColor : UIColor.darkGray,
+                        .font : UIFont.preferredFont(forTextStyle: .caption1)
+                    ]
+                )
             }.disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(Movie.self)
+        tableView.rx
+            .modelSelected(Movie.self)
             .bind { movie in
                 print(movie.title)
             }.disposed(by: disposeBag)
@@ -74,7 +87,11 @@ class TrendingViewController: UIViewController {
 extension TrendingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 160
     }
-    
+    private func tableView(_ tableView: UITableView, titleForHeaderInSection
+                                section: Int) -> String? {
+       return "Header \(section)"
+    }
+  
 }

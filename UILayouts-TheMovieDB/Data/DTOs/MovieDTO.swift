@@ -14,7 +14,7 @@ struct MovieDTO: Codable {
     let backdropPath: String
     let id: Int
     let title: String?
-    let originalLanguage: OriginalLanguageDTO
+    let originalLanguage: OriginalLanguageDTO?
     let originalTitle: String?
     let overview, posterPath: String
     let mediaType: MediaTypeDTO

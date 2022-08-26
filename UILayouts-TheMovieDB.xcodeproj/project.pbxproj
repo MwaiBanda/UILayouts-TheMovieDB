@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810C242628B95BEC0061B32D /* Label+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C242528B95BEC0061B32D /* Label+Swift.swift */; };
+		810C242828B95E240061B32D /* Font+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C242728B95E240061B32D /* Font+Swift.swift */; };
 		81362D9428B8075800AE15BD /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 81362D9328B8075800AE15BD /* RxCocoa */; };
 		81362D9628B8075800AE15BD /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 81362D9528B8075800AE15BD /* RxRelay */; };
 		81362D9828B8075800AE15BD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 81362D9728B8075800AE15BD /* RxSwift */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		810C242528B95BEC0061B32D /* Label+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Swift.swift"; sourceTree = "<group>"; };
+		810C242728B95E240061B32D /* Font+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Swift.swift"; sourceTree = "<group>"; };
 		81362D9B28B80C9A00AE15BD /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		81362D9E28B80EEC00AE15BD /* FeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		81362DA328B80FD500AE15BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				815E02F428B8751C00254488 /* URL+Swift.swift */,
+				810C242528B95BEC0061B32D /* Label+Swift.swift */,
+				810C242728B95E240061B32D /* Font+Swift.swift */,
 			);
 			path = Exts;
 			sourceTree = "<group>";
@@ -430,6 +436,8 @@
 				815E02F528B8751C00254488 /* URL+Swift.swift in Sources */,
 				81FEBCA928B6CE950006A18A /* LoginViewController.swift in Sources */,
 				815E02F328B8746400254488 /* OriginalLanguageDTO.swift in Sources */,
+				810C242628B95BEC0061B32D /* Label+Swift.swift in Sources */,
+				810C242828B95E240061B32D /* Font+Swift.swift in Sources */,
 				81FEBCA528B6CE950006A18A /* AppDelegate.swift in Sources */,
 				815E02E628B86C5500254488 /* MovieDTO.swift in Sources */,
 				81362DA428B80FD500AE15BD /* Constants.swift in Sources */,
