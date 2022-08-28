@@ -10,4 +10,5 @@ import Foundation
 
 protocol MovieService {
     func fetchTrending(onCompletion: @escaping (Result<[Movie], Error>) -> Void)
+    func fetchFeatured(onCompletion: @escaping (Result<[Movie], Error>) -> Void)
 }

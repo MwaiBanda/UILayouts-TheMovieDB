@@ -37,4 +37,11 @@ extension Endpoint {
     static var trending: Self {
         Endpoint(path: "/3/trending/all/day")
     }
+    
+    static var featured: Self {
+        Endpoint(path: "/3/movie/popular", queryItems: [
+            URLQueryItem(name: "language", value: "en-US"),
+            URLQueryItem(name: "page", value: "1")
+        ])
+    }
 }

@@ -17,7 +17,7 @@ struct MovieDTO: Codable {
     let originalLanguage: OriginalLanguageDTO?
     let originalTitle: String?
     let overview, posterPath: String
-    let mediaType: MediaTypeDTO
+    let mediaType: MediaTypeDTO?
     let genreIDS: [Int]
     let popularity: Double
     let releaseDate: String?

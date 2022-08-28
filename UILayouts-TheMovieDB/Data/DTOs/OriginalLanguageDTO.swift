@@ -9,6 +9,7 @@ import Foundation
 
 enum OriginalLanguageDTO: String, Codable {
     case en = "en"
+    case es = "es"
     case it = "it"
     case ja = "ja"
     case pl = "pl"
