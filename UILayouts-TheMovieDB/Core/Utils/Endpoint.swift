@@ -43,13 +43,35 @@ extension Endpoint {
         )
     }
     
-    static var featured: Self {
+    static var upcoming: Self {
+        Endpoint(
+            key: Constants.UPCOMING,
+            path: "/3/movie/upcoming",
+            queryItems: [
+                URLQueryItem(name: "language", value: "en-US"),
+                URLQueryItem(name: "page", value: "\(2)")
+            ]
+        )
+    }
+    
+    static func featured(pageNumber: Int) -> Self {
         Endpoint(
             key: Constants.FEATURED,
             path: "/3/movie/popular",
             queryItems: [
                 URLQueryItem(name: "language", value: "en-US"),
-                URLQueryItem(name: "page", value: "1")
+                URLQueryItem(name: "page", value: "\(pageNumber)")
+            ]
+        )
+    }
+    
+    static func topRated(pageNumber: Int) -> Self {
+         Endpoint(
+            key: Constants.TOP_RATED,
+            path: "/3/movie/top_rated",
+            queryItems: [
+                URLQueryItem(name: "language", value: "en-US"),
+                URLQueryItem(name: "page", value: "\(pageNumber)")
             ]
         )
     }

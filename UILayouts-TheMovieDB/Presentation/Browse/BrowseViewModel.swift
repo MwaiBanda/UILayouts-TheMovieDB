@@ -19,14 +19,29 @@ class BrowseViewModel {
     
     func getMovies(){
         getTrendingMovies { [unowned self] trending in
-            self.movies.accept(trending)
-            getFeaturedMovies { featured in
-                self.movies.accept(featured)
+            getFeaturedMovies { [unowned self] featured in
+                getTopRatedMovies { [unowned self] topRated in
+                    getUpcomingMovies { [unowned self] latest in
+                        movies.accept(latest + trending + topRated + featured)
+                    }
+                }
             }
         }
     }
     func getFeaturedMovies(onCompletion: @escaping ([[Movie]]) -> Void) {
-        movieService.fetchFeatured { res in
+        movieService.fetchFeatured(pageNumber: 1) { res in
+            switch res {
+            case .success(let movies):
+                onCompletion(self.movies.value + [movies])
+                print("[FETCH-RESULT]: Success")
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    func getUpcomingMovies(onCompletion: @escaping ([[Movie]]) -> Void) {
+        movieService.fetchUpcoming { res in
             switch res {
             case .success(let movies):
                 onCompletion(self.movies.value + [movies])
@@ -40,6 +55,18 @@ class BrowseViewModel {
     
     func getTrendingMovies(onCompletion: @escaping ([[Movie]]) -> Void) {
         self.movieService.fetchTrending { res in
+            switch res {
+            case .success(let movies):
+                onCompletion(self.movies.value + [movies])
+                print("[FETCH-RESULT]: Success")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getTopRatedMovies(onCompletion: @escaping ([[Movie]]) -> Void) {
+        self.movieService.fetchTopRated(pageNumber: 1) { res in
             switch res {
             case .success(let movies):
                 onCompletion(self.movies.value + [movies])

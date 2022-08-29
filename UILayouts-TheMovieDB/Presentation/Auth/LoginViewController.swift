@@ -158,10 +158,15 @@ class LoginViewController: UIViewController {
         featuredViewController.title = Constants.FEATURED
         featuredViewController.tabBarItem.image = UIImage(systemName: "ticket")
         
+        let searchViewController = UINavigationController(rootViewController: SearchViewController())
+        searchViewController.title = Constants.SEARCH
+        searchViewController.tabBarItem.image = UIImage(systemName: "text.magnifyingglass")
+        
         tabBarViewController.setViewControllers([
             browseViewController,
             movieListViewController,
-            featuredViewController
+            featuredViewController,
+            searchViewController
         ], animated: true)
         
         tabBarViewController.modalPresentationStyle = .fullScreen

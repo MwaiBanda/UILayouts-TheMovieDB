@@ -12,10 +12,12 @@ import RxCocoa
 class BrowseViewController: UIViewController {
     private let browseViewModel = BrowseViewModel()
     private let disposeBag = DisposeBag()
+    
     private lazy var tableView: UITableView = {
         let table =  UITableView()
         table.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.identifier)
         table.backgroundColor = .clear
+        table.showsVerticalScrollIndicator = false
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -25,7 +27,9 @@ class BrowseViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = .systemGray5
         navigationController?.tabBarController?.tabBar.barTintColor = .systemGray5
-        browseViewModel.getMovies()
+        if browseViewModel.movies.value.isEmpty {
+            browseViewModel.getMovies()
+        }
     }
     
     override func viewDidLoad() {
@@ -35,7 +39,7 @@ class BrowseViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
-
+        
         setupConstraints()
         setupSubscribers()
     }

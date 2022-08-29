@@ -18,7 +18,7 @@ class FeaturedViewModel {
     }
     
     func getTrendingMovies() {
-        movieService.fetchFeatured { res in
+        movieService.fetchFeatured(pageNumber: 1) { res in
             switch res {
             case .success(let movies):
                 self.movies.onNext(movies)

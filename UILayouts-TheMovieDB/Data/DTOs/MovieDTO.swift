@@ -11,12 +11,13 @@ import Foundation
 // MARK: - MovieDTO
 struct MovieDTO: Codable {
     let adult: Bool
-    let backdropPath: String
+    let backdropPath: String?
     let id: Int
     let title: String?
     let originalLanguage: OriginalLanguageDTO?
     let originalTitle: String?
-    let overview, posterPath: String
+    let overview: String
+    let posterPath: String?
     let mediaType: MediaTypeDTO?
     let genreIDS: [Int]
     let popularity: Double
@@ -59,8 +60,8 @@ extension MovieDTO {
             overview: overview,
             popularity: popularity,
             voteAverage: voteAverage,
-            posterImageUrl: .compressedImage(path: posterPath),
-            backdropImageUrl: .originalImage(path: backdropPath)
+            posterImageUrl: .compressedImage(path: posterPath ?? ""),
+            backdropImageUrl: .originalImage(path: backdropPath ?? "" )
         )
     }
 }

@@ -15,4 +15,9 @@ enum OriginalLanguageDTO: String, Codable {
     case pl = "pl"
     case ko = "ko"
     case da = "da"
+    case hi = "hi"
+    case fr = "fr"
+    case de
+    case tr
+    case pt
 }

@@ -17,6 +17,7 @@ class TrendingViewController: UIViewController {
         let table =  UITableView()
         table.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.identifier)
         table.backgroundColor = .systemGray5
+        table.showsVerticalScrollIndicator = false
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
