@@ -145,13 +145,25 @@ class LoginViewController: UIViewController {
     
     func setUpTabBarViewController() {
         let tabBarViewController = UITabBarController()
+        
+        let browseViewController = UINavigationController(rootViewController: BrowseViewController())
+        browseViewController.title = Constants.BROWSE
+        browseViewController.tabBarItem.image = UIImage(systemName: "doc.text.image")
+        
         let movieListViewController = UINavigationController(rootViewController: TrendingViewController())
-        movieListViewController.title = Constants.TRENDING_TITLE
+        movieListViewController.title = Constants.TRENDING
         movieListViewController.tabBarItem.image = UIImage(systemName: "play.tv")
+        
         let featuredViewController = UINavigationController(rootViewController: FeaturedViewController())
-        featuredViewController.title = Constants.FEATURED_TITLE
+        featuredViewController.title = Constants.FEATURED
         featuredViewController.tabBarItem.image = UIImage(systemName: "ticket")
-        tabBarViewController.setViewControllers([movieListViewController, featuredViewController], animated: true)
+        
+        tabBarViewController.setViewControllers([
+            browseViewController,
+            movieListViewController,
+            featuredViewController
+        ], animated: true)
+        
         tabBarViewController.modalPresentationStyle = .fullScreen
         self.present(tabBarViewController, animated: true)
     }

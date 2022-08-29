@@ -22,7 +22,6 @@ class FeaturedCollectionViewCell: UICollectionViewCell {
     
     var movieTitle: UILabel = {
         let label = UILabel()
-        label.textColor = .black
         label.text = "Title"
         label.font = .preferredCustomFont(forTextStyle: .footnote, weight: .heavy)
         label.heightAnchor.constraint(equalToConstant: 25).isActive = true

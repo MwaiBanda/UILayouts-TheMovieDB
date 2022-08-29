@@ -35,7 +35,7 @@ class FeaturedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray5
-        title = Constants.FEATURED_TITLE
+        title = Constants.FEATURED
         
         view.addSubview(collectionView)
         

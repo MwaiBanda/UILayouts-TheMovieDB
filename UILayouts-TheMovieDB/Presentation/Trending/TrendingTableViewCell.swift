@@ -58,7 +58,7 @@ class TrendingTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         coverImage?.frame = CGRect(
-            x: 10,
+            x: 20,
             y: 5,
             width: contentView.frame.size.height - 50,
             height: contentView.frame.size.height - 10

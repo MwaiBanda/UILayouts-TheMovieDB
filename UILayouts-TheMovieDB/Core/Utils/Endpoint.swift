@@ -8,7 +8,9 @@
 import Foundation
 
 struct Endpoint {
+    var key: String
     var path: String
+    var method: HttpMethod = .get
     var queryItems: [URLQueryItem] = []
 }
 
@@ -35,13 +37,20 @@ extension Endpoint {
 
 extension Endpoint {
     static var trending: Self {
-        Endpoint(path: "/3/trending/all/day")
+        Endpoint(
+            key: Constants.TRENDING,
+            path: "/3/trending/all/day"
+        )
     }
     
     static var featured: Self {
-        Endpoint(path: "/3/movie/popular", queryItems: [
-            URLQueryItem(name: "language", value: "en-US"),
-            URLQueryItem(name: "page", value: "1")
-        ])
+        Endpoint(
+            key: Constants.FEATURED,
+            path: "/3/movie/popular",
+            queryItems: [
+                URLQueryItem(name: "language", value: "en-US"),
+                URLQueryItem(name: "page", value: "1")
+            ]
+        )
     }
 }

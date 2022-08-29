@@ -33,7 +33,7 @@ class TrendingViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemGray5
         view.addSubview(tableView)
-        title = Constants.TRENDING_TITLE
+        title = Constants.TRENDING
         
         
         tableView.rx.setDelegate(self).disposed(by: disposeBag)

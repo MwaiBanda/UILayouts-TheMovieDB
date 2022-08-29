@@ -10,7 +10,7 @@ import Foundation
 protocol RequestProcessor {
     func request<T>(
         _ type: T.Type,
-        url: URL,
+        endpoint: Endpoint,
         onCompletion: @escaping (Result<T, Error>) -> Void
     ) where T: Codable
 }

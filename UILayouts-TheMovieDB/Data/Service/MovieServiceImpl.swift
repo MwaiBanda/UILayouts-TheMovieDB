@@ -17,7 +17,7 @@ class MovieServiceImpl: MovieService {
     }
     
     func fetchFeatured(onCompletion: @escaping (Result<[Movie], Error>) -> Void) {
-        requestProcessor.request(MoviesDTO.self, url: Endpoint.featured.url) { result in
+        requestProcessor.request(MoviesDTO.self, endpoint: Endpoint.featured) { result in
             switch result {
             case .success(let movieResponse):
                 onCompletion(.success(
@@ -31,7 +31,7 @@ class MovieServiceImpl: MovieService {
     }
     
     func fetchTrending(onCompletion: @escaping (Result<[Movie], Error>) -> Void) {
-        requestProcessor.request(MoviesDTO.self, url: Endpoint.trending.url) { result in
+        requestProcessor.request(MoviesDTO.self, endpoint: Endpoint.trending) { result in
             switch result {
             case .success(let movieResponse):
                 onCompletion(.success(
@@ -43,7 +43,6 @@ class MovieServiceImpl: MovieService {
             }
         }
     }
-    
 }
 
 extension MovieServiceImpl {
