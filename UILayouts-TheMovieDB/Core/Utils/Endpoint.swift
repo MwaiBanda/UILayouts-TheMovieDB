@@ -75,4 +75,23 @@ extension Endpoint {
             ]
         )
     }
+    
+    static func search(searchTerm: String, pageNumber: Int) -> Self {
+        Endpoint(
+            key: Constants.SEARCH,
+            path: "/3/search/movie",
+            queryItems: [
+                URLQueryItem(name: "language", value: "en-US"),
+                URLQueryItem(name: "query", value: "\(searchTerm)".replacingOccurrences(of: " ", with: "+")),
+                URLQueryItem(name: "page", value: "\(pageNumber)"),
+                URLQueryItem(name: "include_adult", value: "false")
+            ]
+        )
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+     }
 }

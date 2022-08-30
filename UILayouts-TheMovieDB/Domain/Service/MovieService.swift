@@ -13,5 +13,5 @@ protocol MovieService {
     func fetchUpcoming(onCompletion: @escaping (Result<[Movie], Error>) -> Void)
     func fetchFeatured(pageNumber: Int, onCompletion: @escaping (Result<[Movie], Error>) -> Void)
     func fetchTopRated(pageNumber: Int, onCompletion: @escaping (Result<[Movie], Error>) -> Void)
-
+    func fetchSearch(searchTerm: String, pageNumber: Int, onCompletion: @escaping (Result<[Movie], Error>) -> Void)
 }

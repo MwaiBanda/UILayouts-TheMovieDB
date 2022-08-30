@@ -18,7 +18,13 @@ class MovieServiceImpl: MovieService {
     }
     
     func fetchFeatured(pageNumber: Int, onCompletion: @escaping (Result<[Movie], Error>) -> Void) {
-        requestProcessor.request(MoviesDTO.self, endpoint: Endpoint.featured(pageNumber: pageNumber)) { result in
+        requestProcessor
+            .request(
+                MoviesDTO.self,
+                endpoint: Endpoint.featured(
+                    pageNumber: pageNumber
+                )
+            ) { result in
             switch result {
             case .success(let movieResponse):
                 onCompletion(.success(
@@ -32,7 +38,11 @@ class MovieServiceImpl: MovieService {
     }
     
     func fetchUpcoming(onCompletion: @escaping (Result<[Movie], Error>) -> Void) {
-        requestProcessor.request(MoviesDTO.self, endpoint: Endpoint.upcoming) { result in
+        requestProcessor
+            .request(
+                MoviesDTO.self,
+                endpoint: Endpoint.upcoming
+            ) { result in
             switch result {
             case .success(let movieResponse):
                 onCompletion(.success(
@@ -46,7 +56,11 @@ class MovieServiceImpl: MovieService {
     }
     
     func fetchTrending(onCompletion: @escaping (Result<[Movie], Error>) -> Void) {
-        requestProcessor.request(MoviesDTO.self, endpoint: Endpoint.trending) { result in
+        requestProcessor
+            .request(
+                MoviesDTO.self,
+                endpoint: Endpoint.trending
+            ) { result in
             switch result {
             case .success(let movieResponse):
                 onCompletion(.success(
@@ -60,7 +74,37 @@ class MovieServiceImpl: MovieService {
     }
     
     func fetchTopRated(pageNumber: Int, onCompletion: @escaping (Result<[Movie], Error>) -> Void) {
-        requestProcessor.request(MoviesDTO.self, endpoint: Endpoint.topRated(pageNumber: pageNumber)) { result in
+        requestProcessor
+            .request(
+                MoviesDTO.self,
+                endpoint: Endpoint.topRated(
+                    pageNumber: pageNumber
+                )
+            ) { result in
+            switch result {
+            case .success(let movieResponse):
+                onCompletion(.success(
+                    movieResponse.collection.map({ $0.toMovie() })
+                        .filter({ !$0.title.isEmpty })
+                ))
+            case .failure(let error):
+                onCompletion(.failure(error))
+            }
+        }
+    }
+    func fetchSearch(
+        searchTerm: String,
+        pageNumber: Int,
+        onCompletion: @escaping (Result<[Movie], Error>) -> Void
+    ) {
+        requestProcessor
+            .request(
+                MoviesDTO.self,
+                endpoint: Endpoint.search(
+                    searchTerm: searchTerm,
+                    pageNumber: pageNumber
+                )
+            ) { result in
             switch result {
             case .success(let movieResponse):
                 onCompletion(.success(
