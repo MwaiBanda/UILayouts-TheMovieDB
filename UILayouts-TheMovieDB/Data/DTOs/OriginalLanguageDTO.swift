@@ -32,5 +32,5 @@ enum OriginalLanguageDTO: String, Codable {
     case et, ms, `is`
     case pa, lt, yi
     case mr, ku, qu
-    case am
+    case am, mk
 }
